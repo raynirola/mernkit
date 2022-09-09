@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    },
+    "target": "es2022",
+    "baseUrl": ".",
+    "loose": true,
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "minify": false,
+  "module": { "type": "es6" }
+}
