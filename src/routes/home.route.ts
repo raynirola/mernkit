@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import * as controllers from '@/controllers'
+import HomeController from '@/controllers/HomeController'
 
 const home = Router() as Router
 
-home.get('/', controllers.home)
+home.get('/', HomeController)
 
 export default home
