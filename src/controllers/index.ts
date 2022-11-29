@@ -1,2 +1,4 @@
-export { default as home } from '@/controllers/home.controller'
-export { default as user } from '@/controllers/user.controller'
+import HomeController from '@/controllers/HomeController'
+import UserController from '@/controllers/UserController'
+
+export { HomeController, UserController }
