@@ -1,3 +1,5 @@
-import { default as error } from '@/middlewares/error.middleware'
+import ErrorMiddleware from '@/middlewares/ErrorMiddleware'
+import AuthMiddleware from '@/middlewares/AuthMiddleware'
+import SessionMiddleware from '@/middlewares/SessionMiddleware'
 
-export { error }
+export { ErrorMiddleware, AuthMiddleware, SessionMiddleware }
