@@ -4,7 +4,7 @@ import UserActions from '@/actions/users'
 
 export default class UserController extends Controller {
   index: RequestHandler = async (_req, res) => {
-    const data = await new UserActions().getAllUsers()
+    const data = await new UserActions().getAllUsers({ profile: true })
     res.json({ message: 'success', data })
   }
 }
