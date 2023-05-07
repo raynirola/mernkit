@@ -1,5 +1,5 @@
 import { ZodError } from 'zod'
-import schema from '@/schemas/AuthSchema'
+import schema from '@/validators/auth'
 import { ErrorRequestHandler } from 'express'
 import { HttpException, BadRequestException } from '@/exceptions'
 
@@ -11,10 +11,10 @@ const ErrorMiddleware: ErrorRequestHandler = (err, _req, res, next) => {
   }
 
   if (err instanceof HttpException) {
-    return res.status(err.status).json(err.serialize())
+    return res.status(err.status).json({ message: 'error', data: err.serialize() })
   }
 
-  res.status(500).json({ message: err.message })
+  res.status(500).json({ message: 'error', data: err.message })
 }
 
 function formatZodError(err: ZodError<any>) {

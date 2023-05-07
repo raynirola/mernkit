@@ -11,10 +11,8 @@ declare global {
     export interface Request {
       user?: {
         id: string
-        uuid: string
         emailVerifiedAt: Date
         type: 'ADMIN' | 'USER'
-        limits?: { payload: number; rate: number; storage: number }
       }
     }
   }
@@ -43,7 +41,7 @@ const SessionMiddleware: express.RequestHandler = async (req, _, next) => {
 
     const user = await db.user.findUniqueOrThrow({
       where: { id: decoded.id },
-      select: { id: true, uuid: true, emailVerifiedAt: true, type: true, limits: true }
+      select: { id: true, emailVerifiedAt: true, type: true }
     })
 
     req.user = user

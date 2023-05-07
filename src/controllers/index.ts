@@ -1,4 +1,5 @@
-import HomeController from '@/controllers/HomeController'
-import UserController from '@/controllers/UserController'
+import HomeController from '@/controllers/home'
+import UserController from '@/controllers/users'
+import AuthController from '@/controllers/auth'
 
-export { HomeController, UserController }
+export { HomeController, UserController, AuthController }
