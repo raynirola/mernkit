@@ -21,11 +21,12 @@ async function createUsers(count: number) {
       email: faker.internet.email(firstName, lastName).toLowerCase(),
       password: await bcrypt.hash('password', 10),
       profile: {
-        avatar: faker.image.avatar(),
-        bio: faker.lorem.paragraph(),
-        name: `${firstName} ${lastName}`
+        create: {
+          avatar: faker.image.avatar(),
+          bio: faker.lorem.paragraph(),
+          name: `${firstName} ${lastName}`
+        }
       },
-      type: 'USER',
       emailVerifiedAt: Boolean(Math.round(Math.random())) ? faker.date.past() : null,
       deletedAt: Boolean(Math.round(Math.random())) ? faker.date.past() : null
     }
@@ -33,7 +34,7 @@ async function createUsers(count: number) {
 
   for (const _i of _.range(1, count)) data.push(await generateRandomUser())
 
-  await db.user.createMany({ data })
+  for (const user of data) await db.user.create({ data: user })
 
   console.log('Seeding users done. ✅')
 }
